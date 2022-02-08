@@ -87,7 +87,24 @@ public class DiscoService {
             Disco disco = discoDAO.buscarDiscoXId(id);
             //Verificamos
             if (disco == null) {
-                throw new Exception("No se econtró el disco con ese ID.");
+                throw new Exception("No se encontró el disco con ese ID.");
+            }
+            return disco;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } return null;
+    }
+    
+    public Disco buscarDiscoXTitulo(String titulo) throws Exception {
+        try {
+            //Validamos
+            if (titulo.isEmpty()) {
+                throw new Exception("Debe indicar el Título del disco a buscar.");
+            }
+            Disco disco = discoDAO.buscarDiscoXTitulo(titulo);
+            //Verificamos
+            if (disco == null) {
+                throw new Exception("No se econtró un disco con ese título.");
             }
             return disco;
         } catch (Exception e) {

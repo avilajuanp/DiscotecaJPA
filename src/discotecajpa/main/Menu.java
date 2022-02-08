@@ -78,13 +78,19 @@ public class Menu {
                     selloService.imprimirSellos();
                     break;
                 case 7:
-                    System.out.println("Ingrese id del Disco a editar:");
+                    modificarDatosDisco();
+                    break;
+                case 8:
+                    System.out.println("Ingrese Id del disco:");
                     Disco disco = discoService.buscarDiscoXId(leer.nextLong());
-                    System.out.println("Ingrese nuevo Título:");
-                    String nuevoTitulo = leer.next();
-                    System.out.println("Ingrese nuevo Artista:");
-                    String nuevoArtista = leer.next();
-                    discoService.modificarTituloArtista(disco.getId(), nuevoTitulo, nuevoArtista);
+                    System.out.printf("%-8s%-38s%-15s%-15s%-25s%-15s\n", "Código", "Título", "Fecha Lanz.", "Cant. Copias", "Artista", "Sello");
+                    System.out.println(disco);
+                    break;
+                case 9:
+                    System.out.println("Ingrese nombre del disco:");
+                    disco = discoService.buscarDiscoXTitulo(leer.next());
+                    System.out.printf("%-8s%-38s%-15s%-15s%-25s%-15s\n", "Código", "Título", "Fecha Lanz.", "Cant. Copias", "Artista", "Sello");
+                    System.out.println(disco);
                     break;
                 
                 default:
@@ -153,6 +159,15 @@ public class Menu {
         return sello;
     }
     
+    public void modificarDatosDisco() throws Exception{
+        System.out.println("Ingrese id del Disco a editar:");
+        Disco disco = discoService.buscarDiscoXId(leer.nextLong());
+        System.out.println("Ingrese nuevo Título:");
+        String nuevoTitulo = leer.next();
+        System.out.println("Ingrese nuevo Artista:");
+        String nuevoArtista = leer.next();
+        discoService.modificarTituloArtista(disco.getId(), nuevoTitulo, nuevoArtista);
+    }
     
     
 }
