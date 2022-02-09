@@ -1,5 +1,6 @@
 package discotecajpa.persistence;
 
+import discotecajpa.entities.Artista;
 import discotecajpa.entities.Disco;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -65,6 +66,11 @@ public final class DiscoDAO {
         Disco disco = (Disco) em.createQuery("SELECT a FROM Disco a WHERE "
                 + "a.titulo LIKE :titulo").setParameter("titulo", titulo).getSingleResult();
         return disco;
+    }
+    
+    public List<Disco> listarDiscosXArtista (String artista) throws Exception {
+        List<Disco> discos = em.createQuery("SELECT a FROM Disco a WHERE a.artista.nombre LIKE :artista").setParameter("artista", artista).getResultList();
+        return discos;
     }
     
     public List<Disco> listarDiscos () throws Exception {

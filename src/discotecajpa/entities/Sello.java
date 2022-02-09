@@ -1,5 +1,6 @@
 package discotecajpa.entities;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
  * @author Juan Pablo Avila (avilajuanp@gmail.com)
  */
 @Entity
-public class Sello {
+public class Sello implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

@@ -1,6 +1,6 @@
 package discotecajpa.entities;
 
-import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
  */
 //mapeo JPA
 @Entity
-public class Disco {
+public class Disco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

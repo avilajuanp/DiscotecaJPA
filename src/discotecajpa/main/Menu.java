@@ -48,7 +48,7 @@ public class Menu {
             System.out.println(" 8- Buscar Disco por ID");
             System.out.println(" 9- Buscar Disco por nombre");
 
-            System.out.println(" 10 - Buscar Discos por Artista");
+            System.out.println(" 10 - Buscar Discos de un Artista");
             System.out.println(" 11 - Buscar Discos por Sello");
             
             System.out.println(" 0- Salir");
@@ -92,7 +92,10 @@ public class Menu {
                     System.out.printf("%-8s%-38s%-15s%-15s%-25s%-15s\n", "Código", "Título", "Fecha Lanz.", "Cant. Copias", "Artista", "Sello");
                     System.out.println(disco);
                     break;
-                
+                case 10:
+                    System.out.println("Ingrese Artista a buscar:");
+                    discoService.imprimirDiscosXArtista(leer.next());
+                    break;
                 default:
                     throw new AssertionError();
             }

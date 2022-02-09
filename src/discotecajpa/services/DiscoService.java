@@ -142,6 +142,35 @@ public class DiscoService {
         }
     }
     
+    public List<Disco> listarDiscosXArtista(String artista) throws Exception {
+        try {
+            List<Disco> discos = discoDAO.listarDiscosXArtista(artista);
+            return discos;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    
+    public void imprimirDiscosXArtista(String artista) throws Exception {
+        try {
+            List<Disco> discos = listarDiscosXArtista(artista);
+            //una vez llena la lista, valido y mando a consola
+            if (discos.isEmpty()) {
+                throw new Exception("No existen discos de ese Artista en la DB.");
+            } else {
+                
+                System.out.println("----LISTA DE DISCOS DE "+artista+" EN LA DB----");
+                System.out.printf("%-8s%-38s%-15s%-15s%-25s%-15s\n", "Código", "Título", "Fecha Lanz.", "Cant. Copias", "Artista", "Sello");
+                discos.forEach(disco -> {
+                    System.out.println(disco.toString());
+                });
+                System.out.println("");
+            }            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public void eliminarDiscoXId (long id) throws Exception {
         
         try {
